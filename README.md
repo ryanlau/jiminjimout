@@ -7,5 +7,8 @@
 This project is a version of 8ball/pool/billiards in Processing.
 
 ## How To Launch 
-First, from the root of the project directory, run `processing Woo/Woo.pde.
-Then click the run button or CTRL-R.
+#### Linux
+From the root of the project directory, run `processing Woo/Woo.pde`. Click the run button or CTRL/CMD+R to launch.
+
+#### Non-Linux 
+Open processing. Then, CTRL/CMD+O and choose project directory. Click the run button or CTRL/CMD+R to launch.
