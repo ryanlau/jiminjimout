@@ -12,7 +12,7 @@ public class Ball {
   PVector acceleration;
 
 
-  Ball(float x, float y, color c, int number, int type) {
+  Ball(float x, float y, int number, int type, color c) {
     this.type = type;
     this.c = c;
     this.number = number;
@@ -25,9 +25,20 @@ public class Ball {
   }
 
   void display() {
+    if (type == STRIPE) {
+      fill(WHITE);
+      circle(position.x, position.y, diameter);
+      imageMode(CENTER);
+      clip(position.x, position.y, diameter, diameter * .7);
+    }
+
     fill(c);
     circle(position.x, position.y, diameter);
+    noClip();
 
+    if (type == CUE) {
+      return;
+    }
 
     fill(WHITE);
     circle(position.x, position.y, diameter/2);
