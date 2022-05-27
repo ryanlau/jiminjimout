@@ -44,8 +44,8 @@ public class Ball {
     circle(position.x, position.y, diameter/2);
 
     fill(BLACK);
-    textFont(BALL_FONT, diameter * .35);
+    textFont(BALL_FONT, (int) (diameter * .35));
     textAlign(CENTER, CENTER);
-    text(nf(number), position.x, position.y);
+    text(nf(number), position.x, position.y - (int) (diameter * 0.05));
   }
 }
