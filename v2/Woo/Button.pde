@@ -22,8 +22,6 @@ public class Button {
   void display() {
     fill(c);
     rect(position.x, position.y, w, h, r);
-
-
     fill(BLACK);
     textFont(BALL_FONT);
     //clip();

@@ -19,6 +19,11 @@ final int EIGHT  = 3;
 
 /* FONT */
 PFont BALL_FONT;
+
+ArrayList<Ball> stripes;
+ArrayList<Ball> solids;
+Ball eightBall;
+Ball cueBall;
 /* ==== BALL ==== */
 
 
@@ -31,9 +36,9 @@ final int GAME = 1;
 /* ==== PROGRAM VARIABLES ==== */
 Menu menu;
 Game game;
+Cue cue;
 
 int state;
-ArrayList<Ball> balls;
 /* ==== PROGRAM VARIABLES ==== */
 
 
@@ -43,21 +48,24 @@ void setup() {
   menu = new Menu();
   game = new Game();
   state = MENU;
-  //state = GAME;
+  state = GAME;
 
   size(1000, 600);
 
   BALL_FONT = createFont("poppins.ttf", 144);
 
-  balls = new ArrayList<>();
+  stripes = new ArrayList<>();
+  solids = new ArrayList<>();
 
   for (int i = 0; i < COLORS.length; i++) {
-    balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 1, SOLID, COLORS[i]));
-    balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 9, STRIPE, COLORS[i]));
+    solids.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 1, SOLID, COLORS[i]));
+    stripes.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 9, STRIPE, COLORS[i]));
   }
 
-  balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, 8, EIGHT, BLACK));
-  balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, 16, CUE, WHITE));
+  eightBall = new Ball(random(width - 60) + 30, random(height - 60) + 30, 8, EIGHT, BLACK);
+  cueBall = new Ball(random(width - 60) + 30, random(height - 60) + 30, 16, CUE, WHITE);
+  
+  cue = new Cue();
 }
 
 
@@ -66,7 +74,7 @@ void draw() {
     menu.display();
   } else if (state == GAME) {
     game.display();
-  }
+ }
 }
 
 void mouseClicked() {

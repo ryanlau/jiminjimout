@@ -1,7 +1,7 @@
 public class Ball {
   // static b/c all balls have equal mass and radius
   final static float mass = 170;
-  final static float diameter = 30;
+  final static float diameter = 24;
 
   int type;
   color c;
@@ -25,6 +25,8 @@ public class Ball {
   }
 
   void display() {
+    strokeWeight(1);
+
     if (type == STRIPE) {
       fill(WHITE);
       circle(position.x, position.y, diameter);

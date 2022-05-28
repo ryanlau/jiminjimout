@@ -1,26 +1,26 @@
 public class Game {
-  ArrayList<Button> buttons;
-
-  Game() {
-    buttons = new ArrayList<Button>();
-    
-    
-    
-    
-  }
-
   void display() {
-    state = GAME;
     background(24, 58, 59);
 
-    for (Button button : buttons) {
-      button.display();
-    }
+    state = GAME;
 
-    for (Ball ball : balls) {
+    for (Ball ball : stripes) {
       ball.updateVectors();
       ball.display();
     }
+    
+    for (Ball ball : solids) {
+      ball.updateVectors();
+      ball.display();
+    }
+    
+    cue.display();
+
+    cueBall.updateVectors();
+    cueBall.display();
+    
+    eightBall.updateVectors();
+    cueBall.display();
   }
   
 }
