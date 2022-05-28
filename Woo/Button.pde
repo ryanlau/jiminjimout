@@ -1,4 +1,4 @@
-public class Button {
+public abstract class Button {
   PVector position;
   float w, h, r;
 
@@ -32,12 +32,9 @@ public class Button {
     text(s, (w - textWidth(s)) / 2 + position.x, position.y);
   }
   
-  // OVERRIDE IN SUBCLASSES
-  void handleClick() {
-    return;
-  }
-  
   boolean mouseOver() {
     return (position.x < mouseX && mouseX < position.x + w) && (position.y < mouseY && mouseY < position.y + h);
   }
+  
+  abstract void handleClick();
 }
