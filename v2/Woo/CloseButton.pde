@@ -8,7 +8,7 @@ public class CloseButton extends Button {
     super.r = r;
   }
 
-  void click() {
+  void handleClick() {
     exit();
   }
 }

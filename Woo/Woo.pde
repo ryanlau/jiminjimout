@@ -19,11 +19,6 @@ final int EIGHT  = 3;
 
 /* FONT */
 PFont BALL_FONT;
-
-ArrayList<Ball> stripes;
-ArrayList<Ball> solids;
-Ball eightBall;
-Ball cueBall;
 /* ==== BALL ==== */
 
 
@@ -33,39 +28,32 @@ final int GAME = 1;
 /* ==== ENUM PROGRAM STATES ==== */
 
 
-/* ==== PROGRAM VARIABLES ==== */
+/* ==== PROGRAM STATE ==== */
 Menu menu;
 Game game;
-Cue cue;
-
 int state;
-/* ==== PROGRAM VARIABLES ==== */
+/* ==== PROGRAM STATE ==== */
+
+
+/* ==== MISC ==== */
+PImage jimin;
+/* ==== MISC ==== */
 
 
 void setup() {
+  jimin = loadImage("jimin.png");
+  surface.setTitle("8 Ball");
+  surface.setIcon(jimin);
+
   imageMode(CENTER);
 
   menu = new Menu();
   game = new Game();
   state = MENU;
-  state = GAME;
+  //state = GAME;
 
   size(1000, 600);
-
   BALL_FONT = createFont("poppins.ttf", 144);
-
-  stripes = new ArrayList<>();
-  solids = new ArrayList<>();
-
-  for (int i = 0; i < COLORS.length; i++) {
-    solids.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 1, SOLID, COLORS[i]));
-    stripes.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 9, STRIPE, COLORS[i]));
-  }
-
-  eightBall = new Ball(random(width - 60) + 30, random(height - 60) + 30, 8, EIGHT, BLACK);
-  cueBall = new Ball(random(width - 60) + 30, random(height - 60) + 30, 16, CUE, WHITE);
-  
-  cue = new Cue();
 }
 
 
@@ -74,15 +62,12 @@ void draw() {
     menu.display();
   } else if (state == GAME) {
     game.display();
- }
+  }
 }
 
-void mouseClicked() {
+void mousePressed() {
   if (state == MENU) {
-
-    
-  
-  
+    menu.handleClick();
   } else if (state == GAME) {
     return;
   }

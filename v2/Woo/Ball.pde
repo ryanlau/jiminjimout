@@ -1,7 +1,6 @@
 public class Ball {
-  // static b/c all balls have equal mass and radius
-  final static float mass = 170;
-  final static float diameter = 24;
+  final float mass = 170;
+  final float diameter = 24;
 
   int type;
   color c;
@@ -10,7 +9,6 @@ public class Ball {
   PVector position;
   PVector velocity;
   PVector acceleration;
-
 
   Ball(float x, float y, int number, int type, color c) {
     this.type = type;

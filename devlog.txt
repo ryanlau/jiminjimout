@@ -60,9 +60,13 @@ Ryan Lau && Melody Lew && Paul Serbanescu :: Finish proposal
 Ryan Lau && Melody Lew && Paul Serbanescu :: v0 in place
 jimin :: "you can call me artist"
 
-2022-05-26
+2022-05-27
 --------------------------------------------------------------
-Ryan Lau :: Work on balls
+Ryan Lau :: v1: Work on ball appearance
+
+2022-05-28
+--------------------------------------------------------------
+Ryan Lau :: v2: Work on buttons
 
 ==============================================================
 

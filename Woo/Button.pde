@@ -20,16 +20,24 @@ public class Button {
   }
 
   void display() {
+    // DRAW RECTANGLE
     fill(c);
     rect(position.x, position.y, w, h, r);
+    
+    // DRAW TEXT
     fill(BLACK);
     textFont(BALL_FONT);
-    //clip();
-    textAlign(CENTER, CENTER);
-    //text(nf(number), position.x, position.y - (int) (diameter * 0.05));
+    textAlign(LEFT, TOP);
+    textSize(h * .9);
+    text(s, (w - textWidth(s)) / 2 + position.x, position.y);
   }
   
-  void click() {
+  // OVERRIDE IN SUBCLASSES
+  void handleClick() {
     return;
+  }
+  
+  boolean mouseOver() {
+    return (position.x < mouseX && mouseX < position.x + w) && (position.y < mouseY && mouseY < position.y + h);
   }
 }
