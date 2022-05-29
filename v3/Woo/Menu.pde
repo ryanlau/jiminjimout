@@ -12,16 +12,23 @@ public class Menu {
   void display() {
     state = MENU;
     background(0, 255, 0);
+
+    int cursor = ARROW;
     for (Button button : buttons) {
       button.display();
+      if (button.mouseOver()) {
+        cursor = HAND;
+      }
     }
+
+    cursor(cursor);
   }
 
   void handleClick() {
-     for (Button button: buttons) {
-       if (button.mouseOver()) {
-         button.handleClick();
-       }
-     }
+    for (Button button : buttons) {
+      if (button.mouseOver()) {
+        button.handleClick();
+      }
+    }
   }
 }

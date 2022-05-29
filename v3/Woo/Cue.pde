@@ -33,7 +33,7 @@ public class Cue {
     // GUIDE LINE
     stroke(WHITE);
     strokeWeight(2);
-    // TODO: GUIDE LINE SHOULD EXTEND UNTIL IT HITS BALL
+    // TODO: GUIDE LINE SHOULD EXTEND UNTIL IT HITS BALL OR WALL
     line(mouseX, mouseY, ballX, ballY);
   }
 }

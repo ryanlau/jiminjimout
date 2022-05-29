@@ -26,7 +26,7 @@ public abstract class Button {
     
     // DRAW TEXT
     fill(BLACK);
-    textFont(BALL_FONT);
+    textFont(poppins);
     textAlign(LEFT, TOP);
     textSize(h * .9);
     text(s, (w - textWidth(s)) / 2 + position.x, position.y);

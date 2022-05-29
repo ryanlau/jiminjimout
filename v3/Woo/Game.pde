@@ -45,6 +45,6 @@ public class Game {
   }
   
   void handleClick() {
-  
+    return;
   }
 }

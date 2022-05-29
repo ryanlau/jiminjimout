@@ -1,3 +1,21 @@
+/* COLORS */
+final color YELLOW = color(249, 217, 73);
+final color BLUE   = color(0, 0, 245);
+final color RED    = color(234, 51, 35);
+final color PURPLE = color(117, 20, 124);
+final color ORANGE = color(235, 85, 40);
+final color GREEN  = color(69, 137, 52);
+final color MAROON = color(117, 20, 12);
+final color BLACK  = color(0, 0, 0);
+final color WHITE  = color(255, 255, 255);
+final color[] COLORS = {YELLOW, BLUE, RED, PURPLE, ORANGE, GREEN, MAROON};
+
+/* TYPES */
+final int STRIPE = 0;
+final int SOLID  = 1;
+final int CUE    = 2;
+final int EIGHT  = 3;
+
 public class Ball {
   final float mass = 170;
   final float diameter = 24;
@@ -44,7 +62,7 @@ public class Ball {
     circle(position.x, position.y, diameter/2);
 
     fill(BLACK);
-    textFont(BALL_FONT, (int) (diameter * .35));
+    textFont(poppins, (int) (diameter * .35));
     textAlign(CENTER, CENTER);
     text(nf(number), position.x, position.y - (int) (diameter * 0.05));
   }
