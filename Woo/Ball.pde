@@ -18,7 +18,7 @@ final int EIGHT  = 3;
 
 public class Ball {
   final float mass = 170;
-  final float diameter = 5.715 * CM;
+  final float diameter = (int) 5.715 * CM;
   
   int type;
   color c;
@@ -29,8 +29,6 @@ public class Ball {
   PVector acceleration;
 
   Ball(float x, float y, int number, int type, color c) {
-    println(CM);
-
     this.type = type;
     this.c = c;
     this.number = number;

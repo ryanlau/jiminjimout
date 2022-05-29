@@ -33,7 +33,7 @@ void setup() {
   state = MENU;
   //state = GAME;
 
-  size(1200, 800);
+  size(1200, 700);
   
   pixelDensity(displayDensity());
 }
