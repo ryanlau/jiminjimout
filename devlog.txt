@@ -67,7 +67,18 @@ Ryan Lau :: v1: Work on ball appearance
 2022-05-28
 --------------------------------------------------------------
 Ryan Lau :: v2: Work on buttons
+Ryan Lau :: v3: Start on cue
 
+2022-05-29
+--------------------------------------------------------------
+Ryan Lau :: v4: Work on table
+Paul Serbanescu :: v4: Cue guideline
+jimin :: UML Diagram
+
+
+2022-05-30
+--------------------------------------------------------------
+Melody Lew :: v4: Work on Menu
 ==============================================================
 
 
