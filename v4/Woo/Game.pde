@@ -20,6 +20,7 @@ public class Game {
   }
 
   void display() {
+    stroke(BLACK);
     background(51);
 
     state = GAME;
