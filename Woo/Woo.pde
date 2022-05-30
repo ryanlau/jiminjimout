@@ -49,6 +49,7 @@ void draw() {
     fps = (int) frameRate;
   }
 
+  fill(WHITE);
   textFont(poppins, 30);
   textAlign(LEFT, TOP);
   text("FPS: " + nf(fps), 0, 0);
