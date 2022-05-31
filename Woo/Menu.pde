@@ -3,17 +3,19 @@ public class Menu {
 
   Menu() {
     buttons = new ArrayList<>();
-    buttons.add(new V1Button(510, 250, 100, 30, 20, WHITE, "1v1"));
-    buttons.add(new V2Button(510, 300, 100, 30, 20, WHITE, "2v2"));
-    buttons.add(new CloseButton(450, 350, 220, 30, 20, WHITE, "exit"));
+    buttons.add(new V1Button(width/2, 250, 100, 30, 20, WHITE, "1v1"));
+    buttons.add(new V2Button(width/2, 300, 100, 30, 20, WHITE, "2v2"));
+    buttons.add(new CloseButton(width/2, 350, 220, 30, 20, WHITE, "exit"));
   }
 
 
   void display() {
     state = MENU;
-    background(0, 0, 0); //maybe have all black background and have 8balls bouncing in the back
+    background(44,40,40); 
     fill(256, 256, 256);
-    text("Welcome to 8 ballin'", 400, 200); //COME UP WITH BETTER TITLE
+    textAlign(CENTER);
+    text("Welcome to 8 ballin'", width/2, 200); //COME UP WITH BETTER TITLE
+    
     
 
     int cursor = ARROW;

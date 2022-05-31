@@ -22,14 +22,15 @@ public abstract class Button {
   void display() {
     // DRAW RECTANGLE
     fill(c);
+    rectMode(CENTER);
     rect(position.x, position.y, w, h, r);
     
     // DRAW TEXT
-    fill(BLACK);
+    fill(GREEN);
     textFont(poppins);
-    textAlign(LEFT, TOP);
+    textAlign(CENTER);
     textSize(h * .9);
-    text(s, (w - textWidth(s)) / 2 + position.x, position.y);
+    text(s, position.x, position.y + .5 * textAscent() - 3);
   }
   
   boolean mouseOver() {
