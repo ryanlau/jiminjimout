@@ -3,14 +3,14 @@ public class Table {
   final float h = 112 * CM;
   final float borderW = 262 * CM;
   final float borderH = 150 * CM;
-
+  PVector topLeftPos; 
 
   ArrayList<Pocket> pockets;
 
   Table() {
     pockets = new ArrayList<>();
 
-    PVector topLeftPos = new PVector(width/2 - w/2, height/2 - h/2);
+    topLeftPos = new PVector(width/2 - w/2, height/2 - h/2);
 
     pockets.add(new Pocket(topLeftPos.x, topLeftPos.y, _CORNER));
     pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y, _CENTER));
@@ -34,6 +34,8 @@ public class Table {
     for (Pocket pocket : pockets) {
       pocket.display();
     }
+    stroke(WHITE);
+    line(topLeftPos.x + w/4, topLeftPos.y, topLeftPos.x + w/4, topLeftPos.y + h);
   }
 
 

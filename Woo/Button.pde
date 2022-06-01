@@ -34,7 +34,7 @@ public abstract class Button {
   }
   
   boolean mouseOver() {
-    return (position.x < mouseX && mouseX < position.x + w) && (position.y < mouseY && mouseY < position.y + h);
+    return (position.x - w/2 < mouseX && mouseX < position.x + w/2) && (position.y - h/2 < mouseY && mouseY < position.y + h/2);
   }
   
   abstract void handleClick();
