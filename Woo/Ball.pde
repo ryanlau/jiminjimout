@@ -18,7 +18,7 @@ final int EIGHT  = 3;
 
 public class Ball {
   final static float mass = 170;
-  final static float diameter = (int) 5.715 * CM;
+  final static float diameter = (int) (5.715 * CM);
   final static float trueDiameter = (diameter);
   final static float trueRadius = trueDiameter / 2;
   
