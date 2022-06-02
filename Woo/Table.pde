@@ -1,12 +1,13 @@
 public class Table {
-  final float w = 224 * CM;
-  final float h = 112 * CM;
-  final float borderW = 262 * CM;
-  final float borderH = 150 * CM;
+  static final float w = 224 * CM;
+  static final float h = 112 * CM;
+  static final float borderW = 262 * CM;
+  static final float borderH = 150 * CM;
   PVector topLeftPos; 
 
   ArrayList<Pocket> pockets;
   ArrayList<Diamond> diamonds;
+  Cushion c;
 
   Table() {
     pockets = new ArrayList<>();
@@ -31,11 +32,12 @@ public class Table {
       }
     }
 
-    float xOffset = (borderH - h) * 0.25 * CM;
     for (int i = 1; i < 4; i++) {
       diamonds.add(new HDiamond(topLeftPos.x - offset, topLeftPos.y + i * h / 4));
       diamonds.add(new HDiamond(topLeftPos.x + offset + w, topLeftPos.y + i * h / 4));
-    } 
+    }
+    
+    c = new Cushion(topLeftPos.x+(11.43 / 2)*CM, topLeftPos.y);
   }
 
   void display() {
@@ -58,6 +60,8 @@ public class Table {
     for (Diamond diamond : diamonds) {
       diamond.display();
     }
+    
+    c.display();
   }
 
 
