@@ -7,19 +7,20 @@ public class Table {
 
   ArrayList<Pocket> pockets;
   ArrayList<Diamond> diamonds;
-  Cushion c;
+  ArrayList<Cushion> cushions;
 
   Table() {
     pockets = new ArrayList<>();
     diamonds = new ArrayList<>();
+    cushions = new ArrayList<>();
 
     topLeftPos = new PVector(width/2 - w/2, height/2 - h/2);
 
     pockets.add(new Pocket(topLeftPos.x, topLeftPos.y, _CORNER));
-    pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y, _CENTER));
+    pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y - 3 *CM, _CENTER));
     pockets.add(new Pocket(topLeftPos.x + w, topLeftPos.y, _CORNER));
     pockets.add(new Pocket(topLeftPos.x + w, topLeftPos.y + h, _CORNER));
-    pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y + h, _CENTER));
+    pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y + h + 3 * CM, _CENTER));
     pockets.add(new Pocket(topLeftPos.x, topLeftPos.y + h, _CORNER));
 
 
@@ -37,7 +38,8 @@ public class Table {
       diamonds.add(new HDiamond(topLeftPos.x + offset + w, topLeftPos.y + i * h / 4));
     }
     
-    c = new Cushion(topLeftPos.x+(11.43 / 2)*CM, topLeftPos.y);
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPLEFT));
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPRIGHT));
   }
 
   void display() {
@@ -61,7 +63,9 @@ public class Table {
       diamond.display();
     }
     
-    c.display();
+    for (Cushion cushion : cushions) {
+      cushion.display();
+    }
   }
 
 
