@@ -30,7 +30,7 @@ public class Cushion {
     } else if (type == TOPRIGHT) {
       float mid = x + Table.w/2;
       
-      s.vertex(mid - x + mid);
+      // s.vertex(mid - x + mid);
       
     }
 
