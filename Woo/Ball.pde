@@ -59,10 +59,10 @@ public class Ball {
     velocity.mult(FRICTION);
 
     // if ball is slow enough, just stop it
-    // if ( (abs(velocity.x) < TOLERANCE) && (abs(velocity.y) < TOLERANCE) ) {
-    //   velocity.x = 0;
-    //   velocity.y = 0;
-    // }
+    if ( (abs(velocity.x) < TOLERANCE) && (abs(velocity.y) < TOLERANCE) ) {
+      velocity.x = 0;
+      velocity.y = 0;
+    }
 
     // wall collisions
     checkWallCollision();
