@@ -36,6 +36,7 @@ public class Ball {
   //prob use friction not accel
   final float FRICTION = 0.99;
   final float TOLERANCE = 0.25;
+  final float COLLISION_TOLERANCE = 0.2;
   PVector acceleration;
 
   Ball(float x, float y, int number, int type, color c) {
@@ -58,10 +59,10 @@ public class Ball {
     velocity.mult(FRICTION);
 
     // if ball is slow enough, just stop it
-    if ( (abs(velocity.x) < TOLERANCE) && (abs(velocity.y) < TOLERANCE) ) {
-      velocity.x = 0;
-      velocity.y = 0;
-    }
+    // if ( (abs(velocity.x) < TOLERANCE) && (abs(velocity.y) < TOLERANCE) ) {
+    //   velocity.x = 0;
+    //   velocity.y = 0;
+    // }
 
     // wall collisions
     checkWallCollision();
@@ -70,15 +71,38 @@ public class Ball {
   void checkWallCollision() {
     if (position.y + diameter/2 > height/2+(Table.h/2)) {
       velocity.y *= -1;
+      position.y = height/2+(Table.h/2) - diameter/2;
     }
     if (position.x + diameter/2 > width/2+(Table.w/2)) {
       velocity.x *= -1;
+      position.x = width/2+(Table.w/2) - diameter/2;
     }
     if (position.y - diameter/2 < height/2-(Table.h/2)) {
       velocity.y *= -1;
+      position.y = height/2-(Table.h/2) + diameter/2;
     }
     if (position.x - diameter/2 < width/2-(Table.w/2)) {
       velocity.x *= -1;
+      position.x = width/2-(Table.w/2) + diameter/2;
+    }
+  }
+
+  // ball collision given another ball
+  void checkBallCollision(Ball other) {
+    float centerDist = dist(this.position.x, this.position.y, other.position.x, other.position.y);
+
+    if (centerDist <= this.trueRadius + other.trueRadius - COLLISION_TOLERANCE) {
+      this.c = color(255,255,255);
+      other.c = color(255,255,255);
+
+      float overlapAmount = (this.trueRadius + other.trueRadius) - centerDist;
+      // other.position.x += overlapAmount;
+      // other.position.y += overlapAmount;
+
+      // TODO: shift over the balls so they dont clip
+      other.velocity = this.velocity;
+      this.velocity = new PVector(0,0);
+
     }
   }
 

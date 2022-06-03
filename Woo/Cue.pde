@@ -72,7 +72,7 @@ public class Cue {
     float projEndX = lineMag * sin(theta);
     float projEndY = lineMag * cos(theta);
 
-    println(theta * 180 / Math.PI);
+    // println(theta * 180 / Math.PI);
 
     // TESTING //
     // stroke(RED);
@@ -113,7 +113,7 @@ public class Cue {
         guideLineEndPointX = bluePoint.x - projEndXi;
         guideLineEndPointY = bluePoint.y - projEndYi;
 
-        println("BLUE INTERSECT");
+        // println("BLUE INTERSECT");
         return true;
       } else {
         guideLineColor = WHITE;
@@ -147,7 +147,7 @@ public class Cue {
         guideLineEndPointX = redPoint.x + projEndXi;
         guideLineEndPointY = redPoint.y + projEndYi;
 
-        println("RED INTERSECT");
+        // println("RED INTERSECT");
         return true;
       } else {
         guideLineColor = WHITE;

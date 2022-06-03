@@ -1,19 +1,24 @@
 public class Game {
   ArrayList<Ball> balls;
+  ArrayList<Ball[]> ballPairs;
   Ball cueBall;
   Cue cue;
   Table table;
 
   Game() {
     balls = new ArrayList<>();
+    ballPairs = new ArrayList<>();
     cue = new Cue();
     table = new Table();
+
     //for (int i = 0; i < COLORS.length; i++) {
     //  balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 1, SOLID, COLORS[i]));
     //  balls.add(new Ball(random(width - 60) + 30, random(height - 60) + 30, i + 9, STRIPE, COLORS[i]));
     //}
 
     cueBall = new Ball(table.topLeftPos.x + 0.25 * table.w, table.topLeftPos.y + 0.5 * table.h, 16, CUE, WHITE);
+    // add cueBall
+    balls.add(cueBall);
 
     PVector apexPos = new PVector (table.topLeftPos.x + 0.75 * table.w, table.topLeftPos.y + 0.5 * table.h);
     // col one
@@ -51,6 +56,25 @@ public class Game {
     yOffset = Ball.trueDiameter * 2;
     balls.add(new Ball(apexPos.x + xOffset, apexPos.y + yOffset, 15, STRIPE, MAROON)); 
     balls.add(new Ball(apexPos.x + xOffset, apexPos.y - yOffset, 7, SOLID, MAROON)); 
+  
+    generatePairs();
+  }
+
+  // we have to check each pair of balls for collisions with each other
+  void generatePairs() {
+    for (int i = 0; i < balls.size(); i++) {
+      for (int k = i+1; k < balls.size(); k++) {
+        Ball[] pair = {balls.get(i), balls.get(k)};
+        ballPairs.add(pair);
+      }
+    }
+  }
+
+  // check pairs for collisions
+  void checkPairCollision() {
+    for (Ball[] pair : ballPairs) {
+      pair[0].checkBallCollision(pair[1]);
+    }
   }
 
   void display() {
@@ -65,6 +89,9 @@ public class Game {
       ball.updateVectors();
       ball.display();
     }
+
+    // ball collision
+    checkPairCollision();
 
     // only if the cue ball isn't moving
     if ( (cueBall.velocity.x == 0) && (cueBall.velocity.y == 0) ) {
