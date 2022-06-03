@@ -19,7 +19,7 @@ final int EIGHT  = 3;
 public class Ball {
   final static float mass = 170;
   final static float diameter = (int) (5.715 * CM);
-  final static float trueDiameter = (diameter);
+  final static float trueDiameter = (diameter + 3);
   final static float trueRadius = trueDiameter / 2;
   
   int type;
@@ -36,7 +36,7 @@ public class Ball {
   //prob use friction not accel
   final float FRICTION = 0.99;
   final float TOLERANCE = 0.25;
-  final float COLLISION_TOLERANCE = 0.2;
+  final float COLLISION_TOLERANCE = 0;
   PVector acceleration;
 
   Ball(float x, float y, int number, int type, color c) {
@@ -89,19 +89,29 @@ public class Ball {
 
   // ball collision given another ball
   void checkBallCollision(Ball other) {
-    float centerDist = dist(this.position.x, this.position.y, other.position.x, other.position.y);
+    // float centerDist = dist(this.position.x, this.position.y, other.position.x, other.position.y);
 
-    if (centerDist <= this.trueRadius + other.trueRadius - COLLISION_TOLERANCE) {
-      this.c = color(255,255,255);
-      other.c = color(255,255,255);
+    PVector distance = PVector.sub(other.position, this.position);
+    float distanceMagnitude = distance.mag();
 
-      float overlapAmount = (this.trueRadius + other.trueRadius) - centerDist;
-      // other.position.x += overlapAmount;
-      // other.position.y += overlapAmount;
+    float minDistance = this.diameter/2 + other.diameter/2;
+
+    if (distanceMagnitude < minDistance) {
 
       // TODO: shift over the balls so they dont clip
+      float distanceCorrection = (minDistance - distanceMagnitude)/2;
+      PVector d = distance.copy();
+      PVector correction = d.normalize().mult(distanceCorrection);
+
+      other.position.add(correction);
+      this.position.sub(correction);
+
+      float theta = distance.heading();
+      float sin = sin(theta);
+      float cos = cos(theta);
+
       other.velocity = this.velocity;
-      this.velocity = new PVector(0,0);
+      this.velocity = new PVector(-this.velocity.x, -this.velocity.y);
 
     }
   }

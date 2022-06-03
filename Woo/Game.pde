@@ -109,6 +109,9 @@ public class Game {
   }
 
   void handleClick() {
-    cueBall.strike();
+    // only if the cue ball isn't moving
+    if ( (cueBall.velocity.x == 0) && (cueBall.velocity.y == 0) ) {
+      cueBall.strike();
+    }
   }
 }
