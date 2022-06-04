@@ -6,8 +6,8 @@ public class Game {
   Table table;
 
   Game() {
-    balls = new ArrayList<>();
-    ballPairs = new ArrayList<>();
+    balls = new ArrayList<Ball>();
+    ballPairs = new ArrayList<Ball[]>();
     cue = new Cue();
     table = new Table();
 

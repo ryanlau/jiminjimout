@@ -10,7 +10,7 @@ public class Pocket {
     PVector position;
 
     Pocket(float x, float y, int type) {
-        balls = new Stack<>();
+        balls = new Stack<Ball>();
         position = new PVector(x, y);
         diameter = (type == _CORNER) ? 11.43 * CM : 12.7 * CM;
     }

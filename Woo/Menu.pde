@@ -2,7 +2,7 @@ public class Menu {
   ArrayList<Button> buttons;
 
   Menu() {
-    buttons = new ArrayList<>();
+    buttons = new ArrayList<Button>();
     buttons.add(new V1Button(width/2, 250, 100, 30, 20, WHITE, "1v1"));
     buttons.add(new V2Button(width/2, 300, 100, 30, 20, WHITE, "2v2"));
     buttons.add(new CloseButton(width/2, 350, 220, 30, 20, WHITE, "exit"));

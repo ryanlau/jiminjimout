@@ -10,9 +10,9 @@ public class Table {
   ArrayList<Cushion> cushions;
 
   Table() {
-    pockets = new ArrayList<>();
-    diamonds = new ArrayList<>();
-    cushions = new ArrayList<>();
+    pockets = new ArrayList<Pocket>();
+    diamonds = new ArrayList<Diamond>();
+    cushions = new ArrayList<Cushion>();
 
     topLeftPos = new PVector(width/2 - w/2, height/2 - h/2);
 
