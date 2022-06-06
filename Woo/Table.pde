@@ -1,8 +1,8 @@
 public class Table {
   static final float w = 224 * CM;
   static final float h = 112 * CM;
-  static final float borderW = 262 * CM;
-  static final float borderH = 150 * CM;
+  static final float borderW = 250 * CM;
+  static final float borderH = 138 * CM;
   PVector topLeftPos; 
 
   ArrayList<Pocket> pockets;
@@ -38,8 +38,13 @@ public class Table {
       diamonds.add(new HDiamond(topLeftPos.x + offset + w, topLeftPos.y + i * h / 4));
     }
     
-    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPLEFT));
-    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPRIGHT));
+    float midX = topLeftPos.x + w/2; 
+    float midY = topLeftPos.y + h/2;
+    
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPLEFT, midX, midY));
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPRIGHT, midX, midY));
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTLEFT, midX, midY));
+    cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTRIGHT, midX, midY));
   }
 
   void display() {
@@ -47,7 +52,7 @@ public class Table {
 
     // BORDER
     fill(128, 64, 0);
-    rect(width/2, height/2, borderW, borderH, 20 * CM);
+    rect(width/2, height/2, borderW, borderH, 10 * CM);
 
     // ACTUAL TABLE
     fill(24, 58, 59);
