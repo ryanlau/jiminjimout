@@ -5,6 +5,12 @@ public class Game {
   Cue cue;
   Table table;
 
+  // == CUE STATE == //
+  final int AIMING = 0;
+  final int LOCKED_IN = 1;
+  int cueState = AIMING;
+  // == CUE STATE == //
+
   Game() {
     balls = new ArrayList<>();
     ballPairs = new ArrayList<>();
@@ -73,6 +79,12 @@ public class Game {
   }
 
   void display() {
+    if (cueState == AIMING) {
+      mouseStartX = mouseX;
+      mouseStartY = mouseY;
+    }
+
+
     stroke(BLACK);
     background(51);
 
@@ -90,10 +102,10 @@ public class Game {
 
     // only if the cue ball isn't moving
     if ( (cueBall.velocity.x == 0) && (cueBall.velocity.y == 0) ) {
-      cue.display();
+      cue.display(mouseStartX, mouseStartY);
 
       for (Ball ball : balls) {
-        if (cue.lineIntersects(ball)) {
+        if (cue.lineIntersects(ball, mouseStartX, mouseStartY)) {
           break;
         }
       }
@@ -110,6 +122,7 @@ public class Game {
     } else {
       fill(WHITE);
     }
+    text(player1.ballsSunk, width/2 - 200 - textWidth(player1.name), 30 + .5 * textAscent() - 3);
     text(player1.name, width/2 - 200, 30 + .5 * textAscent() - 3);
 
     fill(WHITE);
@@ -121,19 +134,31 @@ public class Game {
       fill(WHITE);
     }
     text(player2.name, width/2 + 200, 30 + .5 * textAscent() - 3);
+    text(player2.ballsSunk, width/2 + 200 + textWidth(player2.name), 30 + .5 * textAscent() - 3);
 
     cueBall.updateVectors();
     cueBall.display();
   }
 
-  void handleClick() {
-    // only if the cue ball isn't moving
-    if ( (cueBall.velocity.x == 0) && (cueBall.velocity.y == 0) ) {
-      cueBall.strike();
-    }
-    
-    // swap turns
-    player1.cycleTurn();
-    player2.cycleTurn();
+  // save mouse pos the moment it is pressed
+  float mouseStartX = mouseX;
+  float mouseStartY = mouseY;
+
+  void handleMousePress() {
+    cueState = LOCKED_IN; 
+    mouseStartX = mouseX;
+    mouseStartY = mouseY;
   }
+
+  float dy = 0;
+
+  void handleMouseDrag() {
+    dy = mouseStartY - mouseY;
+    println(dy);
+  } 
+
+  void handleMouseRelease() {
+    cueState = AIMING;
+  }
+
 }

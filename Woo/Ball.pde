@@ -16,6 +16,9 @@ final int SOLID  = 1;
 final int CUE    = 2;
 final int EIGHT  = 3;
 
+static final int BREAK = 0;
+static final int VARIABLE = 1;
+
 public class Ball {
   final static float mass = 170;
   final static float diameter = (int) (5.715 * CM);
@@ -202,12 +205,18 @@ public class Ball {
   }
 
   // cue strikes cue ball
-  void strike() {
+  void strike(Cue cue) {
     cueHit.play();
 
-    PVector newVel = new PVector(mouseX - position.x, mouseY - position.y).setMag(strikeForce);
+    if (cue.powerState == VARIABLE) {
+      cue.strikePower = 10;
+    }
+    
+    PVector newVel = new PVector(mouseX - position.x, mouseY - position.y).setMag(cue.strikePower);
     velocity.x = newVel.x;
     velocity.y = newVel.y;
+
+    cue.powerState = VARIABLE;
   }
 
   void display() {

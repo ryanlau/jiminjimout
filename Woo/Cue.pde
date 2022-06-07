@@ -1,4 +1,19 @@
 public class Cue {
+  // == CUE STATE == // 
+  int powerState = 0;
+  // == CUE STATE == // 
+
+  // == CUE STRIKE POWER (in mph) == //
+  /* shot speeds are as follows:
+    slow = 1-2 mph
+    medium = 2-4 mph
+    fast = 4-7 mph
+    power shot = 7-10 mph
+    powerful break = 25-30 mph
+  */
+  int strikePower = 35;
+  // == CUE STRIKE POWER (in mph) == //
+
   int len;
   int startOffset;
 
@@ -14,7 +29,7 @@ public class Cue {
     len = startOffset + 300;
   }
   
-  void display() {
+  void display(float cueX, float cueY) {
     noCursor();
     float ballX = game.cueBall.position.x;
     float ballY = game.cueBall.position.y;
@@ -22,8 +37,8 @@ public class Cue {
     // CUE
     stroke(BLACK);
     strokeWeight(4);
-    float dx = ballX - mouseX;
-    float dy = ballY - mouseY;
+    float dx = ballX - cueX;
+    float dy = ballY - cueY;
     float theta = atan(dx / dy);
     
     float startOffsetX = startOffset * sin(theta);
@@ -31,7 +46,7 @@ public class Cue {
     float endOffsetX = len * sin(theta);
     float endOffsetY = len * cos(theta);
     
-    if (mouseY > game.cueBall.position.y) {
+    if (cueY > game.cueBall.position.y) {
       line(ballX - startOffsetX, ballY - startOffsetY, ballX - endOffsetX, ballY - endOffsetY);
     } else {
       line(ballX + startOffsetX, ballY + startOffsetY, ballX + endOffsetX, ballY + endOffsetY);
@@ -43,21 +58,21 @@ public class Cue {
     // TODO: GUIDE LINE SHOULD EXTEND UNTIL IT HITS BALL OR WALL
     line(guideLineEndPointX, guideLineEndPointY, ballX, ballY);
     
-    guideLineEndPointX = mouseX;
-    guideLineEndPointY = mouseY;
+    guideLineEndPointX = cueX;
+    guideLineEndPointY = cueY;
 
     // stroke(WHITE);
     // strokeWeight(2);
-    // line(mouseX, mouseY, ballX, ballY);
+    // line(cueX, cueY, ballX, ballY);
   }
 
-  boolean lineIntersects(Ball ball) {
+  boolean lineIntersects(Ball ball, float cueX, float cueY) {
     // we need the guideline vector
     float ballX = game.cueBall.position.x;
     float ballY = game.cueBall.position.y;
 
     PVector lineStart = new PVector(ballX, ballY);
-    PVector lineEnd = new PVector(mouseX, mouseY);
+    PVector lineEnd = new PVector(cueX, cueY);
 
     // need vector for center of circle
     PVector circleCenter = ball.position;
@@ -65,8 +80,8 @@ public class Cue {
 
     float lineMag = PVector.dist(lineStart, lineEnd) - circleToEndMag;
 
-    float dx = ballX - mouseX;
-    float dy = ballY - mouseY;
+    float dx = ballX - cueX;
+    float dy = ballY - cueY;
     float theta = atan(dx / dy);
 
     float projEndX = lineMag * sin(theta);
@@ -98,8 +113,8 @@ public class Cue {
 
         float intersectMag = (ball.diameter / 2) - (float) Math.sqrt(dist) + diameter/2;
 
-        float dxi = ballX - mouseX;
-        float dyi = ballY - mouseY;
+        float dxi = ballX - cueX;
+        float dyi = ballY - cueY;
         float thetai = atan(dxi / dyi);
 
         float projEndXi = intersectMag * sin(thetai);
@@ -118,8 +133,8 @@ public class Cue {
       } else {
         guideLineColor = WHITE;
 
-        guideLineEndPointX = mouseX;
-        guideLineEndPointY = mouseY;
+        guideLineEndPointX = cueX;
+        guideLineEndPointY = cueY;
         return false;
       }
     }
@@ -132,8 +147,8 @@ public class Cue {
 
         float intersectMag = (ball.diameter / 2) - (float) Math.sqrt(dist) + diameter/2;
 
-        float dxi = ballX - mouseX;
-        float dyi = ballY - mouseY;
+        float dxi = ballX - cueX;
+        float dyi = ballY - cueY;
         float thetai = atan(dxi / dyi);
 
         float projEndXi = intersectMag * sin(thetai);
@@ -152,8 +167,8 @@ public class Cue {
       } else {
         guideLineColor = WHITE;
 
-        guideLineEndPointX = mouseX;
-        guideLineEndPointY = mouseY;
+        guideLineEndPointX = cueX;
+        guideLineEndPointY = cueY;
         return false;
       }
     }

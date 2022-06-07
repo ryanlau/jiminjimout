@@ -85,7 +85,19 @@ void mousePressed() {
   } else if (state == PLAYER_SELECT) {
     playerSelect.handleClick();
   } else if (state == GAME) {
-    game.handleClick();
+    game.handleMousePress();
+  }
+}
+
+void mouseDragged() {
+  if (state == GAME) {
+    game.handleMouseDrag();
+  }
+}
+
+void mouseReleased() {
+  if (state == GAME) {
+    game.handleMouseRelease();
   }
 }
 
