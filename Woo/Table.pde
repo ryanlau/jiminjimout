@@ -24,7 +24,7 @@ public class Table {
     pockets.add(new Pocket(topLeftPos.x, topLeftPos.y + h, _CORNER));
 
 
-    float offset = 19 * 0.5 * CM;
+    float offset = (borderH / 2 - h / 2) / 2;
     for (int i = 1; i < 8; i++) {
       // no diamond at half mark
       if (i != 4) {
@@ -45,6 +45,9 @@ public class Table {
     cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, TOPRIGHT, midX, midY));
     cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTLEFT, midX, midY));
     cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTRIGHT, midX, midY));
+    cushions.add(new Cushion(topLeftPos.x, topLeftPos.y + 6 * CM, _LEFT, midX, midY));
+    cushions.add(new Cushion(topLeftPos.x, topLeftPos.y + 6 * CM, _RIGHT, midX, midY));
+    
   }
 
   void display() {
