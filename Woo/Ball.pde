@@ -205,14 +205,10 @@ public class Ball {
   }
 
   // cue strikes cue ball
-  void strike(Cue cue) {
+  void strike(Cue cue, float xPos, float yPos, float power) {
     cueHit.play();
-
-    if (cue.powerState == VARIABLE) {
-      cue.strikePower = 10;
-    }
     
-    PVector newVel = new PVector(mouseX - position.x, mouseY - position.y).setMag(cue.strikePower);
+    PVector newVel = new PVector(xPos - position.x, yPos - position.y).setMag(power);
     velocity.x = newVel.x;
     velocity.y = newVel.y;
 

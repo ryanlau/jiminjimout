@@ -82,8 +82,6 @@ void mousePressed() {
   // file.play();
   if (state == MENU) {
     menu.handleClick();
-  } else if (state == PLAYER_SELECT) {
-    playerSelect.handleClick();
   } else if (state == GAME) {
     game.handleMousePress();
   }
@@ -98,6 +96,12 @@ void mouseDragged() {
 void mouseReleased() {
   if (state == GAME) {
     game.handleMouseRelease();
+  }
+}
+
+void mouseClicked() {
+  if (state == PLAYER_SELECT) {
+    playerSelect.handleClick();
   }
 }
 

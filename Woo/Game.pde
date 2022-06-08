@@ -5,6 +5,12 @@ public class Game {
   Cue cue;
   Table table;
 
+  // == SHOT POWER STATE == //
+  final int BREAK = 0;
+  final int VARIABLE = 1;
+  // == SHOT POWER STATE == //
+  int SPState = BREAK;
+
   // == CUE STATE == //
   final int AIMING = 0;
   final int LOCKED_IN = 1;
@@ -59,6 +65,8 @@ public class Game {
     balls.add(new Ball(apexPos.x + xOffset, apexPos.y - yOffset, 7, SOLID, MAROON)); 
   
     generatePairs();
+
+    cue.powerState = 0;
   }
 
   // we have to check each pair of balls for collisions with each other
@@ -138,6 +146,22 @@ public class Game {
 
     cueBall.updateVectors();
     cueBall.display();
+
+    if (cueState == LOCKED_IN) {
+      drawPowerRect();
+      updatePowerRect();
+    }
+  }
+
+  void drawPowerRect() {
+    rectMode(CENTER);
+    rect(50, height/2, 40, 200);
+  }
+
+  void updatePowerRect() {
+    rectMode(CORNERS);
+    fill(RED);
+    rect(30, height/2 + 100, 70, height/2 + 100 - cue.strikePower * 20);
   }
 
   // save mouse pos the moment it is pressed
@@ -145,20 +169,47 @@ public class Game {
   float mouseStartY = mouseY;
 
   void handleMousePress() {
-    cueState = LOCKED_IN; 
-    mouseStartX = mouseX;
-    mouseStartY = mouseY;
+    if (SPState == BREAK) {
+      // println("SFSDFSDFSDF");
+      // cueBall.strike(cue, mouseStartX, mouseStartY, 35);
+      // SPState = VARIABLE;
+    } else {
+      cueState = LOCKED_IN; 
+      mouseStartX = mouseX;
+      mouseStartY = mouseY;
+    }
+
+
+    // draw rectangle showing power on right side of screen
   }
 
   float dy = 0;
 
   void handleMouseDrag() {
     dy = mouseStartY - mouseY;
+    dy = dy / 10;
+    // cap power at 10 mph
+    if (dy > 10) {
+      dy = 10;
+    }
+    // make sure it isn't negative
+    if (dy < 0) {
+      dy = 0;
+    }
+
+    cue.strikePower = dy;
     println(dy);
   } 
 
   void handleMouseRelease() {
-    cueState = AIMING;
+    if (SPState == BREAK) {
+      cueBall.strike(cue, mouseStartX, mouseStartY, 35);
+      SPState = VARIABLE;
+    } else {
+      cueBall.strike(cue, mouseStartX, mouseStartY, dy);
+      cueState = AIMING;
+      cue.strikePower = 0;
+    }
   }
 
 }
