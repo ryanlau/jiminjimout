@@ -8,16 +8,12 @@ final static int _RIGHT = 5;
 
 public class Cushion {
   PShape s;
-  int type;
-  PVector pos;
-  
+
   void display() {
     shape(s);
   }
 
-
   Cushion(float x, float y, int type, float midX, float midY) {
-    pos = new PVector(x, y);
     s = createShape();
     s.beginShape();
     s.fill(30, 51, 52);
@@ -43,21 +39,29 @@ public class Cushion {
       s.vertex(x + Table.w/2 - 12.6 * CM, (2 * midY) - (y+3 * CM));
       s.vertex(x+3*CM, (2 * midY)-(y+3*CM));
     } else if (type == BOTRIGHT) {
-      s.vertex((2*midX - x), (2 * midY) - y);
-      s.vertex(2*midX - (x + Table.w/2 - 12.2 * CM),(2 * midY) - y);
+      s.vertex(2*midX - x, (2 * midY) - y);
+      s.vertex(2*midX - (x + Table.w/2 - 12.2 * CM), (2 * midY) - y);
       s.vertex(2*midX - (x + Table.w/2 - 12.6 * CM), (2 * midY) - (y+3 * CM));
       s.vertex(2*midX - (x+3*CM), (2 * midY)-(y+3*CM));
     } else if (type == _LEFT) {
-      s.vertex(x,y);
+      s.vertex(x, y);
       s.vertex(x+3*CM, y+3*CM);
       s.vertex(x+3*CM, y + Table.h - 15.6 * CM);
       s.vertex(x, y + Table.h - 12.6 * CM);
     } else if (type == _RIGHT) {
-       s.vertex(2 * midX - x,y);
+      s.vertex(2 * midX - x, y);
       s.vertex(2 * midX - (x+3*CM), y+3*CM);
       s.vertex(2 * midX - (x+3*CM), y + Table.h - 15.6 * CM);
       s.vertex(2 * midX - x, y + Table.h - 12.6 * CM);
     }
     s.endShape();
+  }
+
+  PVector[] getVertices() {
+    PVector[] vertices = new PVector[4];
+    for (int i = 0; i < vertices.length; i++) {
+      vertices[i] = s.getVertex(i);
+    }
+    return vertices;
   }
 }

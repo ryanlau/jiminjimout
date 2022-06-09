@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /* COLORS */
 final color YELLOW = color(249, 217, 73);
 final color BLUE   = color(0, 0, 245);
@@ -213,6 +215,16 @@ public class Ball {
     velocity.y = newVel.y;
 
     cue.powerState = VARIABLE;
+  }
+
+  boolean isPocketed() {
+    for (Pocket pocket : Woo.game.table.pockets) {
+      float distance = sqrt(pow(position.x - pocket.position.x, 2) + pow(position.y - pocket.position.y, 2));
+      if (distance <= (pocket.diameter) / 2) {
+        return true;
+      }
+    }
+    return false;
   }
 
   void display() {

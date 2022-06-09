@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Game {
   ArrayList<Ball> balls;
   ArrayList<Ball[]> ballPairs;
@@ -24,7 +26,6 @@ public class Game {
     table = new Table();
 
     cueBall = new Ball(table.topLeftPos.x + 0.25 * table.w, table.topLeftPos.y + 0.5 * table.h, 16, CUE, WHITE);
-    // add cueBall
     balls.add(cueBall);
 
     PVector apexPos = new PVector (table.topLeftPos.x + 0.75 * table.w, table.topLeftPos.y + 0.5 * table.h);
@@ -99,10 +100,16 @@ public class Game {
     state = GAME;
 
     table.display();
+    
 
-    for (Ball ball : balls) {
+    Iterator<Ball> it = balls.iterator();
+    while (it.hasNext()) {
+      Ball ball = it.next();
+
       ball.updateVectors();
       ball.display();
+      
+      if (ball.isPocketed()) it.remove();
     }
 
     // ball collision

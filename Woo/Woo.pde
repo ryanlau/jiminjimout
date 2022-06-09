@@ -10,8 +10,8 @@ final int GAME = 2;
 /* ==== ENUM PROGRAM STATES ==== */
 
 /* ==== PROGRAM STATE ==== */
-Menu menu;
-Game game;
+static Menu menu;
+static Game game;
 PlayerSelect playerSelect;
 int state;
 /* ==== PROGRAM STATE ==== */
