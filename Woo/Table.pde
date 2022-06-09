@@ -24,9 +24,6 @@ public class Table {
     pockets.add(new Pocket(topLeftPos.x + w, topLeftPos.y + h, _CORNER));
     pockets.add(new Pocket(topLeftPos.x + w/2, topLeftPos.y + h + 3 * CM, _CENTER));
     pockets.add(new Pocket(topLeftPos.x, topLeftPos.y + h, _CORNER));
-    pockets.add(new Pocket(topLeftPos.x + 300, topLeftPos.y + 300, _CORNER));
-
-
 
     float offset = (borderH / 2 - h / 2) / 2;
     for (int i = 1; i < 8; i++) {
@@ -50,12 +47,7 @@ public class Table {
     cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTLEFT, midX, midY));
     cushions.add(new Cushion(topLeftPos.x+(6)*CM, topLeftPos.y, BOTRIGHT, midX, midY));
     cushions.add(new Cushion(topLeftPos.x, topLeftPos.y + 6 * CM, _LEFT, midX, midY));
-    cushions.add(new Cushion(topLeftPos.x, topLeftPos.y + 6 * CM, _RIGHT, midX, midY));
-    
-    for (Cushion cushion : cushions) {
-      System.out.println(Arrays.toString(cushion.getVertices()));
-    }
-    
+    cushions.add(new Cushion(topLeftPos.x, topLeftPos.y + 6 * CM, _RIGHT, midX, midY));    
   }
 
   void display() {

@@ -36,7 +36,7 @@ void setup() {
   surface.setTitle("8 Ball");
   surface.setIcon(jimin);
   poppins = createFont("poppins.ttf", 144);
-  frameRate(120);
+  // frameRate(120);
   fps = (int) frameRate;
 
   imageMode(CENTER);
@@ -75,7 +75,7 @@ void draw() {
   fill(WHITE);
   textFont(poppins, 30);
   textAlign(LEFT, TOP);
-  text("FPS: " + nf(fps), 0, 0);
+  // text("FPS: " + nf(fps), 0, 0);
 }
 
 void mousePressed() {

@@ -108,7 +108,7 @@ public class Game {
 
       ball.updateVectors();
       ball.display();
-      
+
       if (ball.isPocketed()) it.remove();
     }
 

@@ -80,29 +80,28 @@ public class Ball {
     }
 
     // wall collisions
-    checkRailCollision();
+    checkCushionCollision();
   }
 
-  void checkRailCollision() {
-    if (position.y + diameter/2 > height/2+(Table.h/2)) {
-      railHit.play();
-      velocity.y *= -1 * RAIL_FRICTION;
-      position.y = height/2+(Table.h/2) - diameter/2;
-    }
-    if (position.x + diameter/2 > width/2+(Table.w/2)) {
-      railHit.play();
-      velocity.x *= -1 * RAIL_FRICTION;
-      position.x = width/2+(Table.w/2) - diameter/2;
-    }
-    if (position.y - diameter/2 < height/2-(Table.h/2)) {
-      railHit.play();
-      velocity.y *= -1 * RAIL_FRICTION;
-      position.y = height/2-(Table.h/2) + diameter/2;
-    }
-    if (position.x - diameter/2 < width/2-(Table.w/2)) {
-      railHit.play();
-      velocity.x *= -1 * RAIL_FRICTION;
-      position.x = width/2-(Table.w/2) + diameter/2;
+  // https://www.jeffreythompson.org/collision-detection/poly-circle.php
+  void checkCushionCollision() {
+    for (Cushion cushion : Woo.game.table.cushions) {
+      PVector[] vertices = cushion.getVertices();
+
+      // check all the edges
+
+      for (int i = 0; i < vertices.length; i++) {
+        int next = (i == 3) ? 0 : i + 1;
+
+        PVector v1 = vertices[i];
+        PVector v2 = vertices[next];
+      
+        if (Collision.lineCircle(v1.x, v1.y, v2.x, v2.y, position.x, position.y, radius)) {
+          velocity.x = 0;
+          velocity.y = 0;
+        }
+      }
+
     }
   }
 
