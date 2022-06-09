@@ -84,6 +84,39 @@ Melody Lew :: v4: Work on Menu
 2022-05-31
 --------------------------------------------------------------
 jimin :: flowchart
+
+2022-06-01
+--------------------------------------------------------------
+Ryan Lau && Melody Lew :: Positioned balls in setup
+Ryan Lau :: Diamonds on pool table border
+
+2022-06-02
+--------------------------------------------------------------
+Melody Lew :: Worked on Cushioning
+Paul Serbanescu :: Cue ball striking
+
+2022-06-03
+--------------------------------------------------------------
+Melody Lew and Ryan Lau :: Continued working on Cushioning
+Paul Serbanescu :: Ball collisions
+Paul Serbanescu :: Sound effects for collisions
+
+2022-06-06
+--------------------------------------------------------------
+Melody Lew and Ryan Lau :: Continued working on Cushioning
+Paul Serbanescu :: Started player select screen
+
+2022-06-07
+--------------------------------------------------------------
+Melody Lew and Ryan Lau :: Finished Cushions
+Paul Serbanescu :: Started shot power
+Paul Serbanescu :: User input
+
+2022-06-08
+--------------------------------------------------------------
+Paul Serbanescu :: Finished power bar
+
+
 ==============================================================
 
 
