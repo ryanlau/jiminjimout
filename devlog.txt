@@ -11,28 +11,39 @@ pd 6
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
--
+- Making the cushions was challenging because there are two sets of cushions to make (horizontal and vertical),
+the cushion shapes are custom, and the positions are hard to define. Once we made the first horizontal cushion (top left),
+we reflected it over the invisible line that marks half of the table width. We applied a similar approach for the 
+rest of the cushions.
+- Positioning items relative to each other was pretty annoying to do in Processing.
+- We created a Bbutton andTextBox class to handle user interaction. 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
--
+- Finding angle of reflection if the edge is slanted
+- Randomly assign ball positions at the start
+- Ball guideline does not show after collision trajectory
+- Ball guideline does not show all collisions
+
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
--
+- Trigonmetry is actually useful?
+- You can have sound effects in processing! Simply download the sound library
+- We can set app icon with these lines:
+  PImage jimin = loadImage("jimin.png");
+  surface.setIcon(jimin);
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
+- Instead of having a 2v2 mode, we decided to have a JIMIN mode. This gave us more room for creativity and made the 
+project more fun since we love jimin! We could also add more features in JIMIN mode, such as sound and images 
 -
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
--
+- Physics is hard...but drawing diagrams/using (WALL MOUNTED) KEYS TO SUCCESS WILL GUIDE YOU TO PHYSICS ENLIGHTENMENT
+- Creating turn based games is a lot harder than we thought
 
 tales of wisdom gained...
 ||||||||||||||||||||||||||||||||||||||||||
@@ -116,6 +127,9 @@ Paul Serbanescu :: User input
 --------------------------------------------------------------
 Paul Serbanescu :: Finished power bar
 
+2022-06-09 && 2022-06-10
+--------------------------------------------------------------
+jimin :: WRAPPING IT UP!
 
 ==============================================================
 
