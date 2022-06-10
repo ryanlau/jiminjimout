@@ -85,6 +85,8 @@ public class Ball {
 
   // https://www.jeffreythompson.org/collision-detection/poly-circle.php
   void checkCushionCollision() {
+
+
     for (Cushion cushion : Woo.game.table.cushions) {
       PVector[] vertices = cushion.getVertices();
 
@@ -95,14 +97,93 @@ public class Ball {
 
         PVector v1 = vertices[i];
         PVector v2 = vertices[next];
-      
+
         if (Collision.lineCircle(v1.x, v1.y, v2.x, v2.y, position.x, position.y, radius)) {
-          velocity.x = 0;
-          velocity.y = 0;
+          // edge is horizontal
+          if (v1.y == v2.y) {
+            velocity.y = -1 * velocity.y;
+            return;
+          }
+
+          // edge is vertical
+          if (v1.x == v2.x) {
+            velocity.x = -1 * velocity.x;
+            return;
+          }
+
+          // edge slope is negative
+          if ((v1.y - v2.y) / (v1.x - v2.x) < 0) {
+            float oldVX = velocity.x;
+            velocity.x = velocity.y;
+            velocity.y = -1 * oldVX;
+            return;
+          }
+
+          // edge slope is positive
+          if ((v1.y - v2.y) / (v1.x - v2.x) > 0) {
+            velocity.x = velocity.y;
+            velocity.y = velocity.x;
+            return;
+          }
         }
       }
-
     }
+
+    //       if (velocity.mag() <= 0) {
+    //         break;
+    //       }
+
+      // float deltaX = position.x - ((v1.x + v2.x) / 2);
+      // float deltaY = position.y - ((v1.y + v2.y) / 2);
+
+      //   float edgeRotation = atan2((v2.y-v1.y), (v2.x-v1.x));
+      //   float cosine = cos(edgeRotation);
+      //   float sine = sin(edgeRotation);
+
+      //     float edgeXTemp = cosine * deltaX + sine * deltaY;
+      //     float edgeYTemp = cosine * deltaY - sine * deltaX;
+      //     float velocityXTemp = cosine * velocity.x + sine * velocity.y;
+      //     float velocityYTemp = cosine * velocity.y - sine * velocity.x;
+
+      //     edgeYTemp = -radius;
+      //     velocityYTemp *= -1.0;
+
+      //     deltaX = cosine * edgeXTemp - sine * edgeYTemp;
+      //     deltaY = cosine * edgeYTemp + sine * edgeXTemp;
+      //     velocity.x = cosine * velocityXTemp - sine * velocityYTemp;
+      //     velocity.y = cosine * velocityYTemp + sine * velocityXTemp;
+      //     position.x = ((v1.x + v2.x) / 2) + deltaX;
+      //     position.y = ((v1.y + v2.y) / 2) + deltaY;
+
+    //       float edgeSlope;
+    //       float trajSlope;
+    //       float angleOfIncidence;
+
+    //       // if vertical edge
+    //       if (v1.x == v2.x) {
+    //         angleOfIncidence = atan(abs(velocity.y / velocity.x));
+    //       } else {
+    //         edgeSlope = (v1.y - v2.y) / (v1.x - v2.x);
+    //         trajSlope = velocity.y / velocity.x;
+    //         angleOfIncidence = atan(abs(((edgeSlope - trajSlope) / (1 + edgeSlope * trajSlope))));
+    //       }
+
+    //       println(angleOfIncidence * (180/PI));
+
+
+    //       println("oldx: " +  velocity.x);
+    //       println("newX: " +  velocity.mag() / sin(angleOfIncidence));
+
+
+    //       println("oldy: " +  velocity.y);
+    //       println("newy: " +  velocity.mag() / sin(angleOfIncidence));
+
+    //       velocity.x *= cos(angleOfIncidence);
+    //       velocity.y *= sin(angleOfIncidence);
+    //     }
+    //   }
+
+    // }
   }
 
   // ball collision given another ball

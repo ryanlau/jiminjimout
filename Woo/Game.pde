@@ -205,7 +205,7 @@ public class Game {
     }
 
     cue.strikePower = dy;
-    println(dy);
+    // println(dy);
   } 
 
   void handleMouseRelease() {

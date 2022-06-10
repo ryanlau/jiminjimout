@@ -11,7 +11,7 @@ public class Cue {
     power shot = 7-10 mph
     powerful break = 25-30 mph
   */
-  float strikePower = 35;
+  float strikePower = 10;
   // == CUE STRIKE POWER (in mph) == //
 
   int len;
