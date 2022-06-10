@@ -22,9 +22,8 @@ public class Cushion {
   Cushion(float x, float y, int type, float midX, float midY) {
     s = createShape();
     s.beginShape();
-    s.fill(30, 51, 52);
-    s.fill(WHITE);
-    s.stroke(30, 51, 52);
+    s.fill(18, 46, 47);
+    s.stroke(18, 46, 47);
     //s.strokeWeight(2);
 
 

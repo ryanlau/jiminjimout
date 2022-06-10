@@ -10,7 +10,7 @@ public class PlayerSelect {
    
    PlayerSelect() {
        buttons = new ArrayList<>();
-       buttons.add(new PlayButton(width/2, 400, 200, 35, 20, WHITE, "play!"));
+       buttons.add(new PlayButton(width/2, 430, 200, 35, 20, WHITE, "play!"));
 
        textBoxes = new ArrayList<>();
        textBoxes.add(new TextBox(width/2 - 200, height/2, 300, 35, "player 1:"));
