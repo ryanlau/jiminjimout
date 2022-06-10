@@ -121,8 +121,9 @@ public class Ball {
 
           // edge slope is positive
           if ((v1.y - v2.y) / (v1.x - v2.x) > 0) {
+            float oldVX = velocity.x;
             velocity.x = velocity.y;
-            velocity.y = velocity.x;
+            velocity.y = oldVX;
             return;
           }
         }

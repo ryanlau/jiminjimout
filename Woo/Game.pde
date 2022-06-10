@@ -151,9 +151,6 @@ public class Game {
     text(player2.name, width/2 + 200, 30 + .5 * textAscent() - 3);
     text(player2.ballsSunk, width/2 + 200 + textWidth(player2.name), 30 + .5 * textAscent() - 3);
 
-    cueBall.updateVectors();
-    cueBall.display();
-
     if (cueState == LOCKED_IN) {
       drawPowerRect();
       updatePowerRect();
