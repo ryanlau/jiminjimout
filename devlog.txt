@@ -24,6 +24,7 @@ UNRESOLVED ISSUES
 - Randomly assign ball positions at the start
 - Ball guideline does not show after collision trajectory
 - Ball guideline does not show all collisions
+- Sometimes balls clip into cushion
 
 
 COOL STUFF LEARNED
@@ -129,7 +130,7 @@ Paul Serbanescu :: Finished power bar
 
 2022-06-09 && 2022-06-10
 --------------------------------------------------------------
-jimin :: WRAPPING IT UP!
+jimin :: WRAPPING IT UP! Finished game logic, UI, and added bounce on cushion hit
 
 ==============================================================
 
