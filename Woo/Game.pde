@@ -112,11 +112,22 @@ public class Game {
   }
 
   void display() {
+    currentPlayer = players.peek();
+    
+    if (currentPlayer.ballsSunk < 0) {
+      fill(WHITE);
+      textSize(60);
+      textAlign(CENTER, CENTER); 
+      text(currentPlayer.name + " wins!", width/2, height/2);
+      return;
+    }
+
     if (turnState == GAME_WON) {
       fill(WHITE);
       textSize(60);
       textAlign(CENTER, CENTER); 
       text(currentPlayer.name + " wins!", width/2, height/2);
+      return;
     }
 
     if (turnState == GAME_OVER) {
@@ -137,7 +148,6 @@ public class Game {
     player1DisplayBall.type = player1.targetBall;
     player2DisplayBall.type = player2.targetBall;
 
-    currentPlayer = players.peek();
     if (turnState == BALLS_MOVING) {
       if (checkForTurnEnd()) {
         // swap turns
@@ -181,15 +191,35 @@ public class Game {
 
       if (ball.isPocketed()) {
         if (ball.number == 8) {
-          if (balls.size() > 1) {
-            // curr player loses game
-            if (currentPlayer.equals(player1)) {
-              turnState = GAME_OVER;
+          // if any of the balls of the player's suit are not pocketed
+          int stripes = 0;
+          int solids = 0;
+          for (Ball iball : balls) {
+            if (iball.type == 0) stripes++;
+            else if (iball.type == 1) solids++;
+          }
+          if (currentPlayer.targetBall == 0) {
+            if (stripes > 1) {
+              // curr player loses game
+              if (currentPlayer.equals(player1)) {
+                turnState = GAME_OVER;
+              } else {
+                turnState = GAME_OVER;
+              }
             } else {
-              turnState = GAME_OVER;
-            }
-          } else {
             turnState = GAME_WON;
+            }
+          } else if (currentPlayer.targetBall == 1) {
+            if (solids > 1) {
+              // curr player loses game
+              if (currentPlayer.equals(player1)) {
+                turnState = GAME_OVER;
+              } else {
+                turnState = GAME_OVER;
+              }
+            } else {
+            turnState = GAME_WON;
+            }
           }
         }
         if (ball != cueBall) {
