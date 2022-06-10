@@ -19,7 +19,7 @@ public class Player {
   Player(String name) {
     this.name = name;
     this.turn = false;
-    ballsSunk = 1;
+    ballsSunk = 7;
   }
 
   void sinkBall(Ball ball) {
