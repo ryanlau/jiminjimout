@@ -23,8 +23,8 @@ UNRESOLVED ISSUES
 - Finding angle of reflection if the edge is slanted
 - Cue ball can be struck if moving
 - Randomly assign ball positions at the start
-- Ball guideline does not show after collision trajectory
-- Ball guideline does not show all collisions
+- Ball guideline does not show collision trajectory
+- Ball guideline sometimes does not show the first collision
 - Sometimes balls clip into cushion
 
 
