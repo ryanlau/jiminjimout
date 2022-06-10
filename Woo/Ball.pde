@@ -325,6 +325,7 @@ public class Ball {
       float distance = sqrt(pow(position.x - pocket.position.x, 2) + pow(position.y - pocket.position.y, 2));
       if (distance <= (pocket.diameter) / 2) {
         this.IS_POCKETED = true;
+        pocket.pocketBall(this);
         return true;
       }
     }

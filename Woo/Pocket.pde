@@ -19,5 +19,16 @@ public class Pocket {
         fill(BLACK);
         ellipseMode(CENTER);
         circle(position.x, position.y, diameter);
+
+        if (!balls.empty()) {
+            Ball ball = balls.peek();
+            ball.position = new PVector(position.x, position.y);
+        }
+    }
+
+    void pocketBall(Ball ball) {
+        if (ball.type != CUE) {
+            balls.push(ball);
+        }
     }
 }
