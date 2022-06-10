@@ -21,6 +21,7 @@ rest of the cushions.
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Finding angle of reflection if the edge is slanted
+- Cue ball can be struck if moving
 - Randomly assign ball positions at the start
 - Ball guideline does not show after collision trajectory
 - Ball guideline does not show all collisions
