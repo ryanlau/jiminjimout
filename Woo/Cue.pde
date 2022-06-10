@@ -120,7 +120,7 @@ public class Cue {
         float projEndXi = intersectMag * sin(thetai);
         float projEndYi = intersectMag * cos(thetai);
         stroke(WHITE);
-        strokeWeight(1);
+        strokeWeight(2);
 
         fill(bgColor);
         circle(bluePoint.x - projEndXi, bluePoint.y - projEndYi, diameter);
@@ -154,7 +154,7 @@ public class Cue {
         float projEndXi = intersectMag * sin(thetai);
         float projEndYi = intersectMag * cos(thetai);
         stroke(WHITE);
-        strokeWeight(1);
+        strokeWeight(2);
 
         fill(bgColor);
         circle(redPoint.x + projEndXi, redPoint.y + projEndYi, diameter);
